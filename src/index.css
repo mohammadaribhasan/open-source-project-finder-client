@@ -1,0 +1,6 @@
+@import "tailwindcss";
+body {
+  font-family: "Courier New", monospace;
+  background-color: #f5f5f5; /* Optional: light background */
+  color: #333; /* Optional: default text color */
+}
