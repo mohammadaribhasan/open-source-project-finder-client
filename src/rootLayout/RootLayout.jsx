@@ -1,16 +1,22 @@
 import React from 'react';
-import { Outlet } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import Navbar from '../components/Navber';
 import Footer from '../components/Footer';
 
 const RootLayout = () => {
+    const location = useLocation();
+
+    // Routes where Navbar and Footer should be hidden
+    const hideNavFooter = ["/login", "/register", "/forget"];
+    const hideLayout = hideNavFooter.includes(location.pathname);
+
     return (
         <div>
-            <Navbar />
-            <div className="mx-auto min-h-screen ">
+            {!hideLayout && <Navbar />}
+            <div className="mx-auto min-h-screen max-width-7xl">
                 <Outlet />
             </div>
-            <Footer />
+            {!hideLayout && <Footer />}
         </div>
     );
 };
