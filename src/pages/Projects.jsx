@@ -1,0 +1,374 @@
+import React from "react";
+import {
+    FaGithub,
+    FaExternalLinkAlt,
+    FaStar,
+    FaCodeBranch,
+    FaBug,
+} from "react-icons/fa";
+
+const projects = [
+    {
+        id: 1,
+        name: "React Starter Kit",
+        stars: 1200,
+        forks: 320,
+        issues: 15,
+        language: "JavaScript",
+        description:
+            "A modern React boilerplate with routing, state management, TailwindCSS, and best practices for scalable apps.",
+        tags: ["React", "Tailwind", "Vite", "Redux"],
+        url: "https://github.com/react-boilerplate/react-boilerplate",
+        demo: "https://reactstarter.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/react/react.png",
+    },
+    {
+        id: 2,
+        name: "Awesome ML",
+        stars: 900,
+        forks: 200,
+        issues: 5,
+        language: "Python",
+        description:
+            "A curated list of awesome Machine Learning frameworks, libraries, datasets, and tutorials for beginners to pros.",
+        tags: ["Python", "ML", "AI", "TensorFlow"],
+        url: "https://github.com/josephmisiti/awesome-machine-learning",
+        demo: "https://awesomeml.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/python/python.png",
+    },
+    {
+        id: 3,
+        name: "Game Engine",
+        stars: 750,
+        forks: 120,
+        issues: 22,
+        language: "C++",
+        description:
+            "A lightweight C++ game engine for building both 2D and 3D projects with physics, rendering, and modular design.",
+        tags: ["C++", "OpenGL", "Physics", "Engine"],
+        url: "https://github.com/gamedev/game-engine",
+        demo: "https://gameengine.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/cpp/cpp.png",
+    },
+    {
+        id: 4,
+        name: "Node API Boilerplate",
+        stars: 680,
+        forks: 210,
+        issues: 12,
+        language: "JavaScript",
+        description:
+            "Scalable REST API boilerplate with Node.js, Express, JWT authentication, and MongoDB integration.",
+        tags: ["Node", "Express", "MongoDB"],
+        url: "https://github.com/someone/node-api-boilerplate",
+        demo: "https://nodeapi.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/nodejs/nodejs.png",
+    },
+    {
+        id: 5,
+        name: "Next.js Portfolio",
+        stars: 1500,
+        forks: 430,
+        issues: 7,
+        language: "JavaScript",
+        description:
+            "A beautifully designed developer portfolio template built with Next.js, TailwindCSS, and Framer Motion.",
+        tags: ["Next.js", "Portfolio", "Tailwind"],
+        url: "https://github.com/someone/nextjs-portfolio",
+        demo: "https://nextportfolio.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/nextjs/nextjs.png",
+    },
+    {
+        id: 6,
+        name: "Django Blog",
+        stars: 540,
+        forks: 140,
+        issues: 8,
+        language: "Python",
+        description:
+            "A full-featured blogging platform with Django, PostgreSQL, authentication, and admin dashboard.",
+        tags: ["Django", "Blog", "PostgreSQL"],
+        url: "https://github.com/someone/django-blog",
+        demo: "https://djangoblog.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/django/django.png",
+    },
+    {
+        id: 7,
+        name: "Weather App",
+        stars: 820,
+        forks: 260,
+        issues: 9,
+        language: "JavaScript",
+        description:
+            "A responsive weather forecast app using React, TailwindCSS, and OpenWeather API.",
+        tags: ["React", "API", "Tailwind"],
+        url: "https://github.com/someone/weather-app",
+        demo: "https://weatherapp.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/javascript/javascript.png",
+    },
+    {
+        id: 8,
+        name: "Rust CLI Tools",
+        stars: 400,
+        forks: 100,
+        issues: 4,
+        language: "Rust",
+        description:
+            "A collection of Rust-based CLI tools for developers and system admins.",
+        tags: ["Rust", "CLI", "Tools"],
+        url: "https://github.com/someone/rust-cli",
+        demo: "https://rustcli.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/rust/rust.png",
+    },
+    {
+        id: 9,
+        name: "AI Chatbot",
+        stars: 980,
+        forks: 290,
+        issues: 18,
+        language: "Python",
+        description:
+            "An AI-powered chatbot built with Python, TensorFlow, and NLP libraries.",
+        tags: ["AI", "NLP", "Chatbot"],
+        url: "https://github.com/someone/ai-chatbot",
+        demo: "https://aichat.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/artificial-intelligence/artificial-intelligence.png",
+    },
+    {
+        id: 10,
+        name: "Vue Dashboard",
+        stars: 720,
+        forks: 180,
+        issues: 11,
+        language: "Vue",
+        description:
+            "An admin dashboard template with Vue 3, TailwindCSS, and Chart.js integration.",
+        tags: ["Vue", "Dashboard", "Tailwind"],
+        url: "https://github.com/someone/vue-dashboard",
+        demo: "https://vuedashboard.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/vue/vue.png",
+    },
+    {
+        id: 11,
+        name: "Flutter E-Commerce",
+        stars: 1340,
+        forks: 350,
+        issues: 14,
+        language: "Dart",
+        description:
+            "A mobile e-commerce app template built with Flutter, Firebase, and Stripe payments.",
+        tags: ["Flutter", "Firebase", "Stripe"],
+        url: "https://github.com/someone/flutter-ecommerce",
+        demo: "https://flutcommerce.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/flutter/flutter.png",
+    },
+    {
+        id: 12,
+        name: "Golang URL Shortener",
+        stars: 560,
+        forks: 160,
+        issues: 6,
+        language: "Go",
+        description:
+            "A fast and reliable URL shortener service built with Golang and Redis.",
+        tags: ["Go", "Redis", "Backend"],
+        url: "https://github.com/someone/go-url-shortener",
+        demo: "https://goshort.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/go/go.png",
+    },
+    {
+        id: 13,
+        name: "Kubernetes Dashboard",
+        stars: 2100,
+        forks: 640,
+        issues: 23,
+        language: "YAML",
+        description:
+            "A custom Kubernetes dashboard for monitoring cluster health and workloads.",
+        tags: ["K8s", "DevOps", "Cloud"],
+        url: "https://github.com/someone/k8s-dashboard",
+        demo: "https://k8sdash.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/kubernetes/kubernetes.png",
+    },
+    {
+        id: 14,
+        name: "Swift Notes App",
+        stars: 480,
+        forks: 120,
+        issues: 3,
+        language: "Swift",
+        description:
+            "A minimalistic notes app for iOS built with SwiftUI and CoreData.",
+        tags: ["iOS", "SwiftUI", "Notes"],
+        url: "https://github.com/someone/swift-notes",
+        demo: "https://notesapp.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/swift/swift.png",
+    },
+    {
+        id: 15,
+        name: "Angular CRM",
+        stars: 890,
+        forks: 250,
+        issues: 16,
+        language: "TypeScript",
+        description:
+            "A CRM system built with Angular, RxJS, and Firebase real-time database.",
+        tags: ["Angular", "CRM", "Firebase"],
+        url: "https://github.com/someone/angular-crm",
+        demo: "https://angularcrm.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/angular/angular.png",
+    },
+    {
+        id: 16,
+        name: "Blockchain Wallet",
+        stars: 1600,
+        forks: 420,
+        issues: 10,
+        language: "Solidity",
+        description:
+            "A decentralized crypto wallet supporting Ethereum and ERC-20 tokens.",
+        tags: ["Blockchain", "Crypto", "Solidity"],
+        url: "https://github.com/someone/blockchain-wallet",
+        demo: "https://wallet.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/ethereum/ethereum.png",
+    },
+    {
+        id: 17,
+        name: "PHP Laravel Shop",
+        stars: 630,
+        forks: 200,
+        issues: 12,
+        language: "PHP",
+        description:
+            "A Laravel-based online shop with payment integration and admin panel.",
+        tags: ["Laravel", "E-commerce", "PHP"],
+        url: "https://github.com/someone/laravel-shop",
+        demo: "https://larashop.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/laravel/laravel.png",
+    },
+    {
+        id: 18,
+        name: "SvelteKit Blog",
+        stars: 720,
+        forks: 180,
+        issues: 9,
+        language: "JavaScript",
+        description:
+            "A blazing-fast static blog built with SvelteKit and TailwindCSS.",
+        tags: ["Svelte", "Blog", "Static"],
+        url: "https://github.com/someone/svelte-blog",
+        demo: "https://svelteblog.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/svelte/svelte.png",
+    },
+    {
+        id: 19,
+        name: "Unity 2D Platformer",
+        stars: 980,
+        forks: 310,
+        issues: 21,
+        language: "C#",
+        description:
+            "A complete 2D platformer template made with Unity, featuring physics and AI.",
+        tags: ["Unity", "C#", "GameDev"],
+        url: "https://github.com/someone/unity-platformer",
+        demo: "https://unitygame.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/unity/unity.png",
+    },
+    {
+        id: 20,
+        name: "TensorFlow Vision",
+        stars: 2400,
+        forks: 750,
+        issues: 30,
+        language: "Python",
+        description:
+            "Computer vision models collection implemented in TensorFlow and Keras.",
+        tags: ["TensorFlow", "CV", "Deep Learning"],
+        url: "https://github.com/someone/tf-vision",
+        demo: "https://tfvision.dev",
+        logo: "https://raw.githubusercontent.com/github/explore/main/topics/tensorflow/tensorflow.png",
+    },
+];
+
+const Projects = () => {
+    return (
+        <section
+            id="trending"
+            className="min-h-screen pt-10 flex flex-col justify-center items-center bg-gradient-to-br from-indigo-600 via-[#F5EFE6] to-[#F5EFE6] text-white px-6 py-20"
+        >
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-12 text-center">
+                Projects
+            </h2>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 w-full max-w-7xl">
+                {projects.map((p) => (
+                    <div
+                        key={p.id}
+                        className="group bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-xl border border-gray-700 hover:border-yellow-400 transition-all duration-300 flex flex-col"
+
+                    >
+                        {/* Logo */}
+                        <div className="bg-gray-700 p-6 flex justify-center items-center">
+                            <img src={p.logo} alt={p.name} className="h-20 w-20 object-contain" />
+                        </div>
+
+                        {/* Info */}
+                        <div className="p-6 flex flex-col flex-grow">
+                            <h3 className="text-2xl font-semibold mb-2 group-hover:text-yellow-300 transition">
+                                {p.name}
+                            </h3>
+                            <p className="text-gray-400 text-sm mb-4">{p.description}</p>
+
+                            {/* Tags */}
+                            <div className="flex flex-wrap gap-2 mb-4">
+                                {p.tags.map((tag, idx) => (
+                                    <span
+                                        key={idx}
+                                        className="px-3 py-1 text-xs rounded-full bg-gray-700 text-gray-200"
+                                    >
+                                        #{tag}
+                                    </span>
+                                ))}
+                            </div>
+
+                            {/* Stats */}
+                            <div className="flex justify-between text-sm text-gray-300 mb-4">
+                                <span className="flex items-center gap-1">
+                                    <FaStar className="text-yellow-400" /> {p.stars}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <FaCodeBranch className="text-green-400" /> {p.forks}
+                                </span>
+                                <span className="flex items-center gap-1">
+                                    <FaBug className="text-red-400" /> {p.issues}
+                                </span>
+                            </div>
+
+                            {/* Buttons */}
+                            <div className="mt-auto flex gap-3">
+                                <a
+                                    href={p.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 bg-gray-800 px-4 py-2 rounded-lg hover:bg-yellow-400 hover:text-black transition"
+                                >
+                                    <FaGithub /> Code
+                                </a>
+                                <a
+                                    href={p.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-2 bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-500 transition"
+                                >
+                                    <FaExternalLinkAlt /> Demo
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+};
+
+export default Projects;
